@@ -93,6 +93,11 @@ public class PizzaOrder implements PizzaOrderInterface {
                 timer ++;
                 view.updateView("Pizza is baking");
             }
+
+            {
+                timer++;
+                view.updateView("Pizza is cooling");
+            }
         }, 0, 5, TimeUnit.SECONDS);
 
     }

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     TextView txtTotal;
     TextView txtStatus;
     PizzaOrderInterface pizzaOrderSystem;
+    Spinner spinnerToppings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
 
         txtTotal = (TextView) findViewById(R.id.textViewTotal);
         txtStatus = (TextView) findViewById(R.id.textViewStatus);
-
+        spinnerToppings = (Spinner) findViewById(R.id.spinnerToppings);
         pizzaOrderSystem = new PizzaOrder(this);
     }
 
@@ -41,7 +42,15 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     public void updateView(String orderStatus) {
         txtStatus.setText("Order Status" + orderStatus);
     }
+    String toppings = spinnerToppings.getSelectedItem().toString();
+    String size = "large";
 
+    if (rbSmall.isChecked()){
+        size = "small";
+    }
+    if (rbMedium.isChecked()){
+        size = "medium";
+    }
     public void onClickOrder(View view) {
         String orderDescription = pizzaOrderSystem.OrderPizza("Pepperoni","Large", false);
         //display a pop up message for a long period of time
